@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<hml lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #171717;
+            margin: 0;
+            /*background-image: url('https://media.discordapp.net/attachments/958441958819364907/1266020299204202496/WhatsApp_Image_2022-12-24_at_3.42.34_PM.jpeg?ex=66a3a0c8&is=66a24f48&hm=3a6c901eb4e2b030b5b223175393bf3833aa8d734702435149d47eb37fb17817&=&format=webp&width=618&height=347'); /* Replace with your image URL */
+            /*background-size: cover; /* Ensure the background image covers the entire body */
+            /*background-position: center; /* Center the background image */
+            /*background-repeat: no-repeat;*/
+        }
+        .jarvis {
+            position: relative;
+            display: flex;
+            flex-direction: block;
+            justify-content: center;
+            align-items: center;
+        }
+        .gui {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container_1 {
+            position: relative;
+            width: 300px;  /* Make sure this is equal to the largest circle's width */
+            height: 300px; /* Make sure this is equal to the largest circle's height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container_2 {
+            position: relative;
+            width: 300px;  /* Make sure this is equal to the largest circle's width */
+            height: 100px; /* Make sure this is equal to the largest circle's height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .circle {
+            border-radius: 50%;
+            position: absolute;
+            border: 5px solid transparent;
+            animation: pulse 5s infinite alternate;
+        }
+
+        .circle1 {
+            opacity: .9;  /* Sets the opacity */
+            height: 300px;  /* Sets the height */
+            width: 300px;
+            background-color: #171717;
+            border: 5px solid rgba(0, 183, 229, 0.9); 
+            border-left: 5px solid rgba(0, 0, 0, 0);  /* Sets the left border color and width */
+            border-right: 5px solid rgba(0, 0, 0, 0);
+            box-shadow: 0 0 75px #2187e7; 
+            animation: spinPlus 4s infinite ease-in-out;/* Applies the animation */
+    /* Sets the right border color and width */  
+        }
+        .circle2 {
+            background-color: rgba(0, 0, 0, 0);  /* Sets the background color to transparent */
+            border: 5px solid rgba(0, 183, 229, 0.9);  /* Sets the border color and width */
+            margin: 0 auto;  /* Centers the element horizontally */
+            height: 250px;  /* Sets the height */
+            width: 250px;  /* Sets the width */
+            border-left: 5px solid rgba(0, 0, 0, 0);  /* Sets the left border color and width */
+            border-right: 5px solid rgba(0, 0, 0, 0);  /* Sets the right border color and width */
+            box-shadow: 0px 0px 75px #2187e7;  /* Adds a shadow */
+            animation: spinPlusOff 5s infinite ease-in-out;          
+        }
+
+        .circle3 {
+            background-color: rgba(0, 0, 0, 0);  /* Sets the background color to transparent */
+            border: 5px solid rgba(0, 183, 229, 0.9);  /* Sets the border color and width */
+            margin: 0 auto;
+            height: 170px;  /* Sets the height */
+            width: 170px;  /* Sets the width */
+            border-left: 5px solid rgba(0, 0, 0, 0);  /* Sets the left border color and width */
+            border-right: 5px solid rgba(0, 0, 0, 0);  /* Sets the right border color and width */
+            box-shadow: 0px 0px 75px #2187e7;  /* Adds a shadow */
+            animation: spinPlus 5.5s infinite ease-in-out;
+            
+        }
+        .bars {
+            position: absolute;  /* Position relative to the container */
+            z-index: 3;  /* Bring to front if necessary */
+            left: 50%;  /* Center horizontally */
+            top: 50%;   /* Center vertically */
+            transform: translate(-50%, -50%); /* Adjust to center the element */
+            width: 60px;  /* Sets the width */
+            height: 60px;  /* Sets the height */
+            display: flex; /* Use flexbox for centering list items */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bars ul {
+            padding: 0; /* Remove default padding */
+            margin: 0;  /* Remove default margin */
+            list-style: none; /* Remove default list style */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bars li {
+            background: #fff;  /* Sets the background color to white */
+            width: 10px;  /* Sets the width */
+            height: 10px;  /* Sets the height */
+            margin: 0 2px;  /* Adds horizontal margin */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Adds a shadow */
+            animation: loaderBar 0.6s infinite ease-in-out; /* Add animation */
+        }
+
+        @keyframes spinPlus {  /* Defines the animation */
+            0%{
+                transform: scale(1);
+                transform: rotate(0deg) scale(1);  /* Starts the animation at normal size */
+            } 50% {
+                transform: scale(1.11);
+                transform: rotate(360deg) scale(1.11);  /* Scales the element up halfway through the animation */
+            } 75% {
+                transform: scale(1);
+                transform: rotate(-360deg) scale(1.11);  /* Returns the element to normal size at the end of the animation */
+            } 100% {
+                transform: scale(1.11);
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        @keyframes spinPlusOff {  /* Defines the animation */
+            0%, 50%, 100% {
+                transform: rotate(0deg) scale(1.1);  /* Starts and ends the animation with no rotation and slightly scaled up */
+            }
+            50% {
+                transform: rotate(360deg) scale(1);  /* Rotates the element 360 degrees and scales it to normal size halfway through the animation */
+            }
+            50% {
+                transform: rotate(-360deg) scale(1);  /* Rotates the element -360 degrees and scales it to normal size halfway through the animation */
+            }
+        }
+        @keyframes loaderBar {
+            0% {
+                height: 10px;  /* Starts the animation with the height set to 10px */
+                margin-top: 25px;  /* Moves the element down by 25px */
+            }
+            50% {
+                height: 50px;  /* Increases the height halfway through the animation */
+                margin-top: 0;  /* Moves the element to its original position */
+            }
+            100% {
+                height: 10px;  /* Returns the height to 10px at the end of the animation */
+                margin-top: 25px;  /* Moves the element down by 25px */
+            }
+        }
+
+        li:first-child {
+            animation-delay: 0s;  /* Applies the animation */
+        }
+
+        li:nth-child(2) {
+            animation-delay: -0.3s;  /* Applies the animation with a delay */
+        }
+
+        li:nth-child(3) {
+            animation-delay: -0.5s;  /* Applies the animation with a delay */
+        }
+        .clock {
+            border: 5px solid transparent;
+            box-shadow: 0px 0px 75px #2187e7; /* Adds a shadow */
+            color: rgba(0, 183, 229, 0.9);
+            border-radius: 30px;
+            background-color: #222222;
+            opacity: 0.75;
+            margin-top: 180px; /* Add margin to separate from circles */
+            text-align: center;
+            align-items: center;
+            font-size: 15px;
+            width: 300px;                 
+        }
+
+        #Date {
+            
+            font-size: 18px;
+            text-align: center;
+            margin: 10px;
+            font-weight: 1000;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .clock ul {            
+            font-family: 'Orbitron', sans-serif;
+            margin: 15px;
+            padding: 0px;
+            list-style: none;
+            display: flex;
+            font-size: 45px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-weight: 1000;
+        }
+    </style>
+    <title>J.A.R.V.I.S.</title>
+</head>
+<body>
+    <div class="jarvis">
+    <div class="function_elements" ></div>
+    <div class="gui">
+    <div class="container_1">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="bars">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div> 
+    <div class="container_2">
+        <div class="clock">
+            <div id="Date">Monday 26 September 2023</div>
+            <ul>
+                <li id="hours">05</li>
+                <li id="point">:</li>
+                <li id="min">20</li>
+                <li id="AmPm">AM</li>
+            </ul>
+        </div>
+    </div> 
+    </div>
+    <div class="chatbox" ></div>
+    </div>
+    <script>
+        function clock(){
+            var monthNames = [ "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December" ]; 
+            var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+            var today = new Date();
+
+            document.getElementById('Date').innerHTML = (dayNames[today.getDay()] + " " + 
+            today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' +today.getFullYear());
+
+            
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var day = h<12 ? 'AM': 'PM';
+
+            if (h==0){
+                h=12;
+            }if (h>12){
+                h=h-12;
+            }   
+            
+            h= (h<10) ? "0"+h :h
+            m= (m<10) ? "0"+m :m
+            s= (s<10) ? "0"+s :s
+
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('min').innerHTML = m;
+            document.getElementById('AmPm').innerHTML = day;
+
+        }
+        var inter = setInterval(clock,400);
+    </script>
+</body>
+</html>
